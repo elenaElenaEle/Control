@@ -10,10 +10,8 @@ void Print(string[] array)
     }
 }
 
-string[] startMassiv = { "hello", "2", "world", ":-", "4 5*", "onion.", "", "~!k" };
 
-
-int SearchMassLen(string[] mass, int strLen, string specStr) // specStr - строка больше длины strLen
+int SearchMassLen(string[] mass, int strLen)
 {
     int count = 0;
     for (int i = 0; i < mass.Length; i++) // поиск длины финишного массива
@@ -21,10 +19,6 @@ int SearchMassLen(string[] mass, int strLen, string specStr) // specStr - стр
         if (mass[i].Length <= strLen)
         {
             count++;
-        }
-        else
-        {
-            mass[i] = specStr; // исключаем строки длинее 3х символов
         }
     }
     return count;
@@ -42,10 +36,12 @@ void CreateFinishMass(string[] mass1, string[] mass2, int strLen)
     }
 }
 
+string[] startMassiv = { "hello", "2", "world", ":-", "4 5*", "onion.", "", "~!k" };
+
 Print(startMassiv);
 Console.WriteLine();
 
-int count = SearchMassLen(startMassiv, 3, "1111");// длина финишного массива
+int count = SearchMassLen(startMassiv, 3);// длина финишного массива
 string[] finishMassiv = new string[count]; // создаём финишный массив
 CreateFinishMass(startMassiv, finishMassiv, 3);
 Print(finishMassiv);
